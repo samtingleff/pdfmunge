@@ -51,7 +51,7 @@ def main(argv):
   """  Process PDFs to make them more legible on eBook readers. """
   try:
     options = handle_options(argv)
-  except getopt.GetoptError as err:
+  except getopt.GetoptError, err:
     print(str(err))
     print(usage_string)
     return 2
@@ -62,14 +62,14 @@ def main(argv):
     input = pyPdf.PdfFileReader(input_stream)
     if options["rotate"] is True:
       input2 = pyPdf.PdfFileReader(input_stream)
-  except IOError as err:
+  except IOError, err:
     print("Unable to open input file: %s" % str(err))
     return 1
 
   try:
     output_stream = file(options["outfile"], "wb")
     output = pyPdf.PdfFileWriter()
-  except IOError as err:
+  except IOError, err:
     print("Unable to create output file: %s" % str(err))
     return 1
 
